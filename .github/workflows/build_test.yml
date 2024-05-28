@@ -28,7 +28,8 @@ jobs:
             ./autogen.sh
             ./configure
             sudo make -j 5
-            sudo make install              
+            sudo make install      
+            ls /usr/local/lib/libsecp256k1*
           else
             brew install libgc tmux git rsync curl redis libpq secp256k1
           fi
@@ -58,6 +59,7 @@ jobs:
           VJOBS: 1
           OFFLINE: 1
         run: |
+          ls /usr/local/lib/libsecp256k1*
           sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/pathlib
           sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/texttools
           sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/playbook
