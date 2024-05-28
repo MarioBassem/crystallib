@@ -57,12 +57,12 @@ jobs:
           VJOBS: 1
           OFFLINE: 1
         run: |
-          sudo v -enable-globals -stats test $(pwd)/crystallib/core/pathlib
-          sudo v -enable-globals -stats test $(pwd)/crystallib/core/texttools
-          sudo v -enable-globals -stats test $(pwd)/crystallib/core/playbook
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/encoder
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/currency
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/markdownparser
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/ourtime
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/paramsparser
-          sudo v -enable-globals -stats test $(pwd)/crystallib/data/doctree
+          v -enable-globals -stats test crystallib/core/pathlib
+          v -enable-globals -stats test crystallib/core/texttools
+          v -enable-globals -stats test crystallib/core/playbook
+          v -enable-globals -stats test crystallib/data/encoder
+          v -enable-globals -stats test crystallib/data/currency
+          v -enable-globals -stats test crystallib/data/markdownparser
+          v -enable-globals -stats test crystallib/data/ourtime
+          v -enable-globals -stats test crystallib/data/paramsparser
+          v -enable-globals -stats test crystallib/data/doctree
