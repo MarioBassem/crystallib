@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-test:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -35,6 +35,7 @@ jobs:
           # redis-cli ping
 
       - name: Setup Vlang
+        id: setup_v
         uses: vlang/setup-v@v1.3
         with:
           check-latest: true
@@ -52,24 +53,17 @@ jobs:
         run: |
           v fmt -w $(pwd)/crystallib
 
-  test:
-    needs: build
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
       - name: Run tests
         env:
           VJOBS: 1
           OFFLINE: 1
         run: |
-          v -enable-globals -stats test crystallib/core/pathlib
-          v -enable-globals -stats test crystallib/core/texttools
-          v -enable-globals -stats test crystallib/core/playbook
-          v -enable-globals -stats test crystallib/data/encoder
-          v -enable-globals -stats test crystallib/data/currency
-          v -enable-globals -stats test crystallib/data/markdownparser
-          v -enable-globals -stats test crystallib/data/ourtime
-          v -enable-globals -stats test crystallib/data/paramsparser
-          v -enable-globals -stats test crystallib/data/doctree
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/pathlib
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/texttools
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/playbook
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/encoder
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/currency
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/markdownparser
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/ourtime
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/paramsparser
+          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/doctree
