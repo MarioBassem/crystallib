@@ -10,6 +10,7 @@ import encoding.base64
 #flag @VMODROOT/secp256k1mod.o
 #flag -lsecp256k1
 #flag -DNO_SECP_MAIN
+#flag linux -L/usr/local/lib
 #flag darwin -I/opt/homebrew/include
 #flag darwin -L/opt/homebrew/lib
 
