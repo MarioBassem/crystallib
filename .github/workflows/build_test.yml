@@ -60,12 +60,12 @@ jobs:
           OFFLINE: 1
         run: |
           ls /usr/local/lib/libsecp256k1*
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/pathlib
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/texttools
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/core/playbook
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/encoder
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/currency
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/markdownparser
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/ourtime
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/paramsparser
-          sudo ${{ steps.setup_v.outputs.v-bin-path }} -enable-globals -stats test crystallib/data/doctree
+          v -enable-globals -stats test crystallib/core/pathlib
+          v -enable-globals -stats test crystallib/core/texttools
+          v -enable-globals -stats test crystallib/core/playbook
+          v -enable-globals -stats test crystallib/data/encoder
+          v -enable-globals -stats test crystallib/data/currency
+          v -enable-globals -stats test crystallib/data/markdownparser
+          v -enable-globals -stats test crystallib/data/ourtime
+          v -enable-globals -stats test crystallib/data/paramsparser
+          v -enable-globals -stats test crystallib/data/doctree
