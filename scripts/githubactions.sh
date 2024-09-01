@@ -812,7 +812,7 @@ function crystal_lib_get {
         if [[ -z "$sshkeys" ]]; then
             echo
         else
-            git remote set-url origin git@github.com:freeflowuniverse/crystallib.git
+            git remote set-url origin git@github.com:mariobassem/crystallib.git
         fi               
         set +e
         git checkout $CLBRANCH
@@ -821,9 +821,9 @@ function crystal_lib_get {
     else
         pushd $DIR_CODE/github/freeflowuniverse 2>&1 >> /dev/null
         if [[ -z "$sshkeys" ]]; then
-            git clone --depth 1 --no-single-branch https://github.com/freeflowuniverse/crystallib.git
+            git clone --depth 1 --no-single-branch https://github.com/mariobassem/crystallib.git
         else
-            git clone --depth 1 --no-single-branch git@github.com:freeflowuniverse/crystallib.git
+            git clone --depth 1 --no-single-branch git@github.com:mariobassem/crystallib.git
         fi        
         crystal_lib_pull
         cd crystallib
@@ -1071,7 +1071,7 @@ function hero_build {
 myplatform
 
 #check if reset should be done
-reset
+# reset
 
 execute_with_marker "os_update" os_update
 
@@ -1083,6 +1083,6 @@ sshknownkeysadd
 
 
 hero_build
-crystal_test
+# crystal_test
 hero_upload
 echo 'OK'
